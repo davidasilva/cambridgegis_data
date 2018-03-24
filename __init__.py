@@ -1,4 +1,4 @@
-from os.path import dirname
+import os
 
 def get_directory_structure(rootdir):
     """
@@ -45,6 +45,6 @@ class filetree(object):
         return self.__repr__()
     
     
-path = dirname(__file__)
+path = os.path.dirname(__file__)
 path_dict = get_directory_structure(path).values()[0]
 files = filetree(**path_dict)
