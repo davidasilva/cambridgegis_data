@@ -1,4 +1,5 @@
 import os
+from functools import reduce
 
 def get_directory_structure(rootdir):
     """
@@ -12,8 +13,8 @@ def get_directory_structure(rootdir):
         files = [path + os.sep + f for f in files]
         subdir = dict.fromkeys(files)
 
-        
-        
+
+
 
         parent = reduce(dict.get, folders[:-1], dir)
         parent[folders[-1]] = subdir
@@ -43,8 +44,8 @@ class filetree(object):
 
     def __str__(self):
         return self.__repr__()
-    
-    
+
+
 path = os.path.dirname(__file__)
-path_dict = get_directory_structure(path).values()[0]
+path_dict = list(get_directory_structure(path).values())[0]
 files = filetree(**path_dict)
